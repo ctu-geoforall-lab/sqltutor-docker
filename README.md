@@ -13,4 +13,4 @@ Deploy [SQLtutor](https://savannah.gnu.org/projects/sqltutor/) using Docker.
 docker-compose up
 ```
 
-Open http://localhost:8085/cgi-bin/sqltutor
+Open http://localhost:8085

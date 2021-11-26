@@ -14,6 +14,9 @@ RUN sed -i 's/host=localhost/host=db/g'      sqltutor/cgi.cpp/settings.cpp
 COPY sqltutor-installer.sh start.sh ./
 RUN chmod 744 start.sh sqltutor-installer.sh
 
+COPY sqltutor.conf /usr/local/apache2/conf/
+RUN echo "Include /usr/local/apache2/conf/sqltutor.conf" \
+    >> /usr/local/apache2/conf/httpd.conf
+
 # run start script
 ENTRYPOINT ["/bin/bash", "/opt/start.sh"]
-CMD ["httpd-foreground"]

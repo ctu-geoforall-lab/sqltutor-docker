@@ -15,6 +15,6 @@ done
 
 # run Apache
 rm -f /usr/local/apache2/logs/httpd.pid
-exec httpd -DFOREGROUND -c "LoadModule cgid_module modules/mod_cgid.so"
+exec httpd -DFOREGROUND
 
 exit 0
