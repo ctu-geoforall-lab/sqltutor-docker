@@ -2,14 +2,7 @@
 
 ### Inspired by https://git.savannah.gnu.org/cgit/sqltutor.git/tree/sqltutor-installer.sh
 
-SQLTUTOR_DATABASE=sqltutor
-SQLTUTOR_WWW_USER=sqlquiz
-SQLTUTOR_PASSWORD=sqlkrok
-SQLTUTOR_WWW_EXEC=sqlexec
-SQLTUTOR_PASSEXEC=sqlkrok
-
 # installer variables
-INSTALLER_VERSION=1.4
 GIT_SQLTUTOR=./sqltutor
 GIT_DATASETS=./datasets
 BINDIR=/usr/local/apache2/cgi-bin/
