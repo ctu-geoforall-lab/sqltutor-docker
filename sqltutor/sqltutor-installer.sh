@@ -7,8 +7,6 @@ GIT_SQLTUTOR=./sqltutor
 GIT_DATASETS=./datasets
 BINDIR=/usr/local/apache2/cgi-bin/
 INFODIR=/usr/share/info
-POSTGIS=
-POSTGIS_PATH=/usr/share/postgresql/9.6/contrib/postgis-2.3
 SED_INPUT=/tmp/$$-sqltutor-installer-sed-input
 
 function preconfigure() {
@@ -46,8 +44,8 @@ echo
 echo Running $GIT_SQLTUTOR/configure --bindir=$BINDIR --infodir=$INFODIR
 ( cd $GIT_SQLTUTOR && ./configure --bindir=$BINDIR --infodir=$INFODIR )
 echo
-echo Running $GIT_DATASETS/configure --bindir=$BINDIR --infodir=$INFODIR $POSTGIS
-( cd $GIT_DATASETS && ./configure --bindir=$BINDIR --infodir=$INFODIR $POSTGIS)
+echo Running $GIT_DATASETS/configure --bindir=$BINDIR --infodir=$INFODIR
+( cd $GIT_DATASETS && ./configure --bindir=$BINDIR --infodir=$INFODIR)
 
 echo
 ( cd $GIT_SQLTUTOR && make clean install )
