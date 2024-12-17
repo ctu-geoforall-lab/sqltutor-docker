@@ -1,4 +1,4 @@
-FROM httpd:2.4-bullseye
+FROM httpd:2.4-bookworm
 
 RUN apt-get update
 RUN apt-get -y install git autoconf g++ make libpqxx-dev texinfo postgresql-client
