@@ -5,6 +5,7 @@
 # installer variables
 GIT_SQLTUTOR=./sqltutor
 GIT_DATASETS=./datasets
+EXTRA_DATASETS=./extra_datasets
 BINDIR=/usr/local/apache2/cgi-bin/
 INFODIR=/usr/share/info
 SED_INPUT=/tmp/$$-sqltutor-installer-sed-input
@@ -50,5 +51,10 @@ echo Running $GIT_DATASETS/configure --bindir=$BINDIR --infodir=$INFODIR
 echo
 ( cd $GIT_SQLTUTOR && make clean install )
 ( cd $GIT_DATASETS && make clean install )
+
+### Additional datasets
+if test -d $EXTRA_DATASETS; then
+    $EXTRA_DATASETS/install.sh
+fi
 
 exit 0
