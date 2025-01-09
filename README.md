@@ -40,3 +40,21 @@ Remove DB volume:
 ```
 docker volume rm sqltutor-docker_db_data
 ```
+
+## Notes
+
+Access DB:
+
+```
+docker compose exec db psql -U postgres sqltutor
+```
+
+Show questions and answers per session:
+
+```sql
+SELECT q.question,s.answer,s.correct
+FROM sqltutor.sessions_questions AS s
+JOIN sqltutor.questions AS q
+USING (problem_id)
+WHERE session_id = <session_id>;
+```
