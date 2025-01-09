@@ -3,6 +3,8 @@ services:
     restart: always
     image: postgis/postgis:16-3.5
     container_name: sqltutor_db_1
+    volumes:
+      - db_data:/var/lib/postgresql/data
     env_file:
       - ./env
 
@@ -17,3 +19,6 @@ services:
       - ./env
     volumes:
       - ./extra_datasets:/opt/extra_datasets
+
+volumes:
+  db_data:
