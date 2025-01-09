@@ -19,7 +19,7 @@ SQLTUTOR_WWW_EXEC=sqlexec
 SQLTUTOR_PASSEXEC=sqlkrok
 ```
 
-2. Deyploy by `docker-compose`:
+2. Deyploy by `docker compose`:
 
 ```bash
 docker compose up
