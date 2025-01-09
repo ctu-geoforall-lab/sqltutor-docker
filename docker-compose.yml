@@ -16,5 +16,5 @@ services:
       - 8085:80
     env_file:
       - ./env
-    volume:
+    volumes:
       - ./extra_datasets:/opt/extra_datasets
