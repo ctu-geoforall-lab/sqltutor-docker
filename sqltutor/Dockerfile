@@ -7,8 +7,6 @@ WORKDIR /opt
 RUN git clone git://git.savannah.gnu.org/sqltutor.git
 RUN git clone git://git.sv.gnu.org/sqltutor/datasets.git
 
-COPY extra_datasets datasets/datasets
-
 RUN sed -i 's/psql/psql -h db -U postgres/g' datasets/configure.ac
 RUN sed -i 's/psql/psql -h db -U postgres/g' sqltutor/database/Makefile.am
 RUN sed -i 's/host=localhost/host=db/g'      sqltutor/cgi.cpp/settings.cpp
