@@ -1,7 +1,7 @@
 services:
   db:
     restart: always
-    image: postgres:14
+    image: postgres:16
     container_name: sqltutor_db_1
     volumes:
       - db_data:/var/lib/postgresql/data
