@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-function install_dataset() {
+function install_tutorial() {
     LANG=$1
     DATASET=$2
 
@@ -10,4 +10,4 @@ function install_dataset() {
     psql -h db -U postgres ${SQLTUTOR_DATABASE} < ./extra_datasets/${LANG}.${DATASET}.sql
 }
 
-install_dataset cs uzpr
+install_tutorial cs uzpr
