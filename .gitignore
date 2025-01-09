@@ -1,3 +1,4 @@
 env
-extra_datasets/
+extra_datasets/cs/
+extra_datasets/cs.*
 *~
