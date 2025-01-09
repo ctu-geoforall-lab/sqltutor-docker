@@ -1,0 +1,12 @@
+--- sqltutor/cgi.cpp/form_main.cpp	2025-01-09 11:51:27.835036487 +0000
++++ /tmp/form_main.cpp	2025-01-09 13:42:53.000000000 +0000
+@@ -115,6 +115,9 @@
+       form << InputHidden("q_ord"      ).value( q_ord       );
+       form << InputHidden("language_id").value( language_id );
+ 
++      form << "<p style='text-align:left'>";
++      form << "User " << t_session << session_id;
++      form << "</p>";
+       form << "<p style='text-align:right'>";
+       form << InputSubmit("state").value(main_stop);
+       form << "</p>";
