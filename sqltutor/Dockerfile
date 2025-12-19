@@ -19,8 +19,9 @@ RUN echo "Include /usr/local/apache2/conf/sqltutor.conf" \
     >> /usr/local/apache2/conf/httpd.conf
 
 # apply patch
-COPY patches/form_main.cpp.diff /tmp
+COPY patches/*.diff /tmp
 RUN patch -p0 sqltutor/cgi.cpp/form_main.cpp < /tmp/form_main.cpp.diff
+RUN patch -p0 sqltutor/Makefile.am < /tmp/Makefile.am.diff
 
 # run start script
 ENTRYPOINT ["/bin/bash", "/opt/start.sh"]
