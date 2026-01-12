@@ -48,15 +48,3 @@ Access DB:
 ```
 docker compose exec db psql -U postgres sqltutor
 ```
-
-Show questions and answers per session:
-
-```sql
-SELECT q.question,sq.answer,sq.correct,s.help
-FROM sqltutor.sessions_questions AS sq
-JOIN sqltutor.questions AS q
-USING (problem_id)
-JOIN sqltutor.sessions as s
-USING (session_id)
-WHERE session_id = <session_id>;
-```
