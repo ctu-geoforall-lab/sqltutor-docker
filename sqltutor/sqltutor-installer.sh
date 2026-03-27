@@ -5,6 +5,7 @@
 # installer variables
 GIT_SQLTUTOR=./sqltutor
 GIT_DATASETS=./datasets
+EXTRA_DATASETS=./extra_datasets
 BINDIR=/usr/local/apache2/cgi-bin/
 INFODIR=/usr/share/info
 SED_INPUT=/tmp/$$-sqltutor-installer-sed-input
@@ -33,10 +34,16 @@ function create_user() {
     psql -h db -U postgres -c "ALTER USER $user WITH PASSWORD '$pass';"
 }
 
-createdb -h db -U postgres $SQLTUTOR_DATABASE
-echo
-(cd /tmp && create_user $SQLTUTOR_WWW_USER $SQLTUTOR_PASSWORD )
-(cd /tmp && create_user $SQLTUTOR_WWW_EXEC $SQLTUTOR_PASSEXEC )
+DB_EXISTS=$(
+    psql -h db -U postgres -tAc "SELECT 1 FROM pg_database WHERE datname='${SQLTUTOR_DATABASE}'"
+)
+
+if [[ "$DB_EXISTS" != "1" ]]; then
+    createdb -h db -U postgres $SQLTUTOR_DATABASE
+    echo
+    (cd /tmp && create_user $SQLTUTOR_WWW_USER $SQLTUTOR_PASSWORD )
+    (cd /tmp && create_user $SQLTUTOR_WWW_EXEC $SQLTUTOR_PASSEXEC )
+fi
 
 preconfigure
 
@@ -44,11 +51,20 @@ echo
 echo Running $GIT_SQLTUTOR/configure --bindir=$BINDIR --infodir=$INFODIR
 ( cd $GIT_SQLTUTOR && ./configure --bindir=$BINDIR --infodir=$INFODIR )
 echo
-echo Running $GIT_DATASETS/configure --bindir=$BINDIR --infodir=$INFODIR
-( cd $GIT_DATASETS && ./configure --bindir=$BINDIR --infodir=$INFODIR)
 
 echo
 ( cd $GIT_SQLTUTOR && make clean install )
-( cd $GIT_DATASETS && make clean install )
+if [[ "$DB_EXISTS" != "1" ]]; then
+    ( cd $GIT_SQLTUTOR/database && make clean install )
+
+    echo Running $GIT_DATASETS/configure --bindir=$BINDIR --infodir=$INFODIR
+    ( cd $GIT_DATASETS && ./configure --bindir=$BINDIR --infodir=$INFODIR)
+    ( cd $GIT_DATASETS && make clean install )
+
+    ### Additional datasets
+    if test -d $EXTRA_DATASETS; then
+        $EXTRA_DATASETS/install.sh
+    fi
+fi
 
 exit 0

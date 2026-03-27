@@ -1,0 +1,10 @@
+--- Makefile.am	2025-11-07 14:13:28.568343317 +0000
++++ Makefile.am.new	2025-12-19 12:31:49.586988118 +0000
+@@ -14,6 +14,6 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-SUBDIRS    = cgi.cpp database doc
++SUBDIRS    = cgi.cpp doc
+ 
+ EXTRA_DIST = autogen.sh sqltutor-installer.sh
