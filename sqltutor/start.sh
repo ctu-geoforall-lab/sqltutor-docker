@@ -2,12 +2,10 @@
 
 export PGPASSWORD=$POSTGRES_PASSWORD
 
-while true; do
+# wait for DB
+until psql -h db -U postgres -l > /dev/null 2>&1; do
+    echo Waiting for database ...
     sleep 5
-    psql -h db -U postgres -l
-    if [[ $? -eq 0 ]] ; then
-        break;
-    fi
 done
 
 # install sqltutor
@@ -16,5 +14,3 @@ done
 # run Apache
 rm -f /usr/local/apache2/logs/httpd.pid
 exec httpd -DFOREGROUND
-
-exit 0

@@ -19,6 +19,9 @@ SQLTUTOR_WWW_EXEC=sqlexec
 SQLTUTOR_PASSEXEC=sqlkrok
 ```
 
+Change the passwords above for any non-local deployment. Database and
+user names must match `[a-z_][a-z0-9_]*`, passwords `[A-Za-z0-9_.-]+`.
+
 2. Deyploy by `docker compose`:
 
 ```bash
