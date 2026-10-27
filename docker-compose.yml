@@ -14,7 +14,7 @@ services:
     image: sqltutor
     container_name: sqltutor_1
     ports:
-      - 8085:80
+      - 8082:80
     env_file:
       - ./env
 
