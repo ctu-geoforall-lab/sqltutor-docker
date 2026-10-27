@@ -14,9 +14,9 @@ Deploy [SQLtutor](https://savannah.gnu.org/projects/sqltutor/) using Docker.
 POSTGRES_PASSWORD=20sqltutor21
 SQLTUTOR_DATABASE=sqltutor
 SQLTUTOR_WWW_USER=sqlquiz
-SQLTUTOR_PASSWORD=sqlkrok
+SQLTUTOR_PASSWORD=xxx
 SQLTUTOR_WWW_EXEC=sqlexec
-SQLTUTOR_PASSEXEC=sqlkrok
+SQLTUTOR_PASSEXEC=xxx
 ```
 
 Change the passwords above for any non-local deployment. Database and
@@ -28,7 +28,7 @@ user names must match `[a-z_][a-z0-9_]*`, passwords `[A-Za-z0-9_.-]+`.
 docker compose up
 ```
 
-3. Open http://localhost:8085
+3. Open http://localhost:8082
 
 ### Re-deploy from scratch
 
